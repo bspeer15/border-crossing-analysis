@@ -10,6 +10,8 @@ val borderData = Source.
  filter( r => r.split(",")(0) != "Port Name" && r != "" ).
  map( r => ( r.split(",")(3), r.split(",")(4), r.split(",")(5), r.split(",")(6).toInt ) )
 
+println("Processing File: ./input/Border_Crossing_Entry_Data.csv")
+
 val distBorderCrossing = borderData.
  map( bd => bd._1 + "|" + bd._2 + "|" + bd._3 ).
  distinct
@@ -59,5 +61,7 @@ pw.write("Border,Date,Measure,Value,Average\n")
 csvData.foreach( line => pw.write(line) )
 
 pw.close
+
+println("Finished. Results are at ./output/report.csv")
 
 }
